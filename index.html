@@ -8,9 +8,9 @@
     <h1>Amazon検索 金額指定</h1>
     <label>商品名</br></label>
     <input type="text" id="product_name" value="">
-    <label></br>金額上限</br></label>
+    <label style="background-color:red"></br>金額上限</br></label>
     <input type="text" id="high_price" value="">
-    <label></br>金額下限</br></label>
+    <label style="background-color:skyblue"></br>金額下限</br></label>
     <input type="text" id="low_price" value="">
     <div></br></div>
     <input type="button" id="btn_execute" value="検索" onclick="openAmazon()">
@@ -24,13 +24,18 @@
             amazonUrl += "k=" + document.getElementById("product_name").value;
 
             // 下限金額の設定
-            amazonUrl += "&low-price=" + document.getElementById("low_price").value;
+            let low_price = document.getElementById("low_price").value;
+            amazonUrl += "&low-price=" + low_price;
 
             // 上限金額の設定
-            amazonUrl += "&high-price=" + document.getElementById("high_price").value;
-
-            // 画面遷移処理
-            window.location.href = amazonUrl;
+            let high_price = document.getElementById("high_price").value;
+            amazonUrl += "&high-price=" + high_price;
+            if (Number(low_price) < Number(high_price)) {
+                // 画面遷移処理
+                window.location.href = amazonUrl;
+            } else {
+                alert("価格設定が、検索可能な状態にありません！");
+            }
         }
     </script>
 </body>
