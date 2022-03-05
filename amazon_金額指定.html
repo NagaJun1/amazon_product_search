@@ -1,0 +1,38 @@
+<html lang="ja">
+
+<head>
+    <title>Amazon検索 金額指定</title>
+</head>
+
+<body>
+    <h1>Amazon検索 金額指定</h1>
+    <label>商品名</br></label>
+    <input type="text" id="product_name" value="">
+    <label></br>金額上限</br></label>
+    <input type="text" id="high_price" value="">
+    <label></br>金額下限</br></label>
+    <input type="text" id="low_price" value="">
+    <div></br></div>
+    <input type="button" id="btn_execute" value="検索" onclick="openAmazon()">
+    <script>
+        /** amazonへの画面遷移実行 */
+        function openAmazon() {
+            // amazon のURL
+            let amazonUrl = 'https://www.amazon.co.jp/s?';
+
+            // 商品名の設定
+            amazonUrl += "k=" + document.getElementById("product_name").value;
+
+            // 下限金額の設定
+            amazonUrl += "&low-price=" + document.getElementById("low_price").value;
+
+            // 上限金額の設定
+            amazonUrl += "&high-price=" + document.getElementById("high_price").value;
+
+            // 画面遷移処理
+            window.location.href = amazonUrl;
+        }
+    </script>
+</body>
+
+</html>
